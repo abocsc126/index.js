@@ -37,5 +37,5 @@ client.on('messageCreate', async (message) => {
     }
 });
 
-// ضع التوكن الجديد هنا
+// تسجيل الدخول لقراءة التوكن من متغيّرات البيئة بأمان
 client.login(process.env.TOKEN);
