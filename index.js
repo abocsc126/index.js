@@ -9,7 +9,7 @@ const client = new Client({
 });
 
 // 📌 ضع هنا ID القناة التي تريد إرسال الأذكار فيها
-const CHANNEL_ID = 'ضع_هنا_ID_القناة';
+const CHANNEL_ID = '1532064945708073001';
 
 // 📖 قائمة ضخمة من الأذكار والأدعية والآيات
 const azkarList = [
