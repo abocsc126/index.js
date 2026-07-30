@@ -38,4 +38,4 @@ client.on('messageCreate', async (message) => {
 });
 
 // ضع التوكن الجديد هنا
-client.login('MTUzMjUxOTg1MDA0NjY1MjU4Nw.GoCgO_.eaRJWivLLJIJR-8r9PNatZrgAGcYcT4sq2py8Q');
+client.login(process.env.TOKEN);
