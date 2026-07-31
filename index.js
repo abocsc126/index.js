@@ -1,4 +1,11 @@
 const { Client, GatewayIntentBits, EmbedBuilder } = require('discord.js');
+const http = require('http');
+
+// 🌐 خادم ويب بسيط لإبقاء البوت متصلاً في Render
+http.createServer((req, res) => {
+    res.write("البوت يعمل بنجاح 🟢");
+    res.end();
+}).listen(process.env.PORT || 3000);
 
 const client = new Client({
     intents: [
@@ -8,10 +15,10 @@ const client = new Client({
     ]
 });
 
-// 📌 ضع هنا ID القناة التي تريد إرسال الأذكار فيها
+// 📌 ضع هنا ID القناة
 const CHANNEL_ID = '1532064945708073001';
 
-// 📖 قائمة موسعة تضم أكثر من 200 ذكر وآية ودعاء
+// 📖 قائمة الأذكار
 const azkarList = [
     // --- أذكار وأدعية عامة ---
     "سبحان الله وبحمده، سبحان الله العظيم 🤍",
@@ -212,8 +219,6 @@ const azkarList = [
     "📖 {فَسَبِّحْ بِحَمْدِ رَبِّكَ وَاسْتَغْفِرْهُ ۚ إِنَّهُ كَانَ تَوَّابًا} [النصر: 3] 🤲",
     "📖 {سُبْحَانَ الَّذِي سَخَّرَ لَنَا هَٰذَا وَمَا كُنَّا لَهُ مُقْرِنِينَ * وَإِنَّا إِلَىٰ رَبِّنَا لَمُنْقَلِبُونَ} [الزخرف: 13-14] 🌸"
 ];
-
-// دالة إرسال الذكر
 function sendZikr(channel) {
     const randomZikr = azkarList[Math.floor(Math.random() * azkarList.length)];
     
@@ -232,17 +237,14 @@ client.on('ready', () => {
     const channel = client.channels.cache.get(CHANNEL_ID);
 
     if (channel) {
-        // إرسال أول ذكر فور تشغيل البوت
         sendZikr(channel);
 
-        // إرسال ذكر تلقائي كل 10 دقائق
         setInterval(() => {
             sendZikr(channel);
         }, 10 * 60 * 1000);
     } else {
-        console.log('❌ لم يتم العثور على القناة، تأكد من كتابة ID القناة الصحيح!');
+        console.log('❌ لم يتم العثور على القناة، تأكد من الـ ID!');
     }
 });
 
-// تسجيل الدخول
 client.login(process.env.TOKEN);
