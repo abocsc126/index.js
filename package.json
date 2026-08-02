@@ -1,7 +1,7 @@
 {
   "name": "azkar-bot",
   "version": "1.0.0",
-  "description": "Discord Azkar Bot",
+  "description": "Discord abdo bot",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
